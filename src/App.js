@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import PhotoOfTheDay from './Pages/PhotoOfTheDay';
+import RandomPhoto from './Pages/RandomPhoto';
+import CustomDatePhoto from './Pages/CustomDatePhoto';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { StyledContainer } from './Utils/Styled Components/StyledContainer';
+import Header from './Components/Header';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <StyledContainer>
+        <Routes>
+          <Route path="/" element={<PhotoOfTheDay />} />
+          <Route path="/random" element={<RandomPhoto />} />
+          <Route path="/custom" element={<CustomDatePhoto />} />
+        </Routes>
+      </StyledContainer>
+    </BrowserRouter>
   );
 }
 
