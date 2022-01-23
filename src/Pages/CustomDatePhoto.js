@@ -30,7 +30,6 @@ export default function CustomDatePhoto() {
         const newUrl = url + date.target.value;
         try {
             const response = await axios.get(newUrl);
-            console.log(response.data);
             if(response.data.media_type === "video"){
                 setVideo(true);
                 setData(response.data);
@@ -39,7 +38,6 @@ export default function CustomDatePhoto() {
             }
          } catch (error) {
             setError(true);
-            // setErrorMessage(error.message);
         }
         setLoading(false);
     };
@@ -49,7 +47,6 @@ export default function CustomDatePhoto() {
     }, [date])// eslint-disable-line react-hooks/exhaustive-deps
 
     const preSetDate = (e) => {
-        console.log(e.target.value);
         setDate(e);
         let today = new Date().toISOString().substring(0, 10);
         if(e.target.value > today) {
