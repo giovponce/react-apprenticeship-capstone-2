@@ -1,22 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { StyledUl, StyledLi } from "../Utils/Styled Components/StyledNav";
+import { StyledLink } from "../Utils/Styled Components/StyledLink";
 
 export default function Header() {
     return (
         <div>
-            <nav>
-            <ul>
-                <li>
-                <Link to="/">Pic of the day</Link>
-                </li>
-                <li>
-                <Link to="/random">Random</Link>
-                </li>
-                <li>
-                <Link to="/custom">Custom</Link>
-                </li>
-            </ul>
-            </nav>
+            
+            <StyledUl>
+                <StyledLi>
+                    <StyledLink to="/">Pic of the day</StyledLink>
+                </StyledLi>
+                <StyledLi>
+                    <StyledLink to="/random">Random</StyledLink>
+                </StyledLi>
+                <StyledLi>
+                    <StyledLink to="/custom">Custom</StyledLink>
+                </StyledLi>
+            </StyledUl>
         </div>
     );
 }

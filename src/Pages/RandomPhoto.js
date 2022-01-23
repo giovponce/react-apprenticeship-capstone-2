@@ -1,31 +1,61 @@
-import React from "react";
-import useAxiosFetch from "../Utils/Hooks/useAxiosFetch";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { StyledImg, StyledImgContainer, StyledImgText } from "../Utils/Styled Components/StyledImg";
 import { StyledH1, StyledTitle, StyledDescription } from "../Utils/Styled Components/StyledText";
 
 export default function RandomPhoto() {
 
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
     function getRandomDate(start, end) {
         return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-      }
+    }
       
-    let randomDate = getRandomDate(new Date(2012, 0, 1), new Date());
-    let dateForApi = randomDate.toISOString().split('T')[0];
+    const randomDate = getRandomDate(new Date(2012, 0, 1), new Date());
+    const dateForApi = randomDate.toISOString().substring(0, 10);
 
-    const data = useAxiosFetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${dateForApi}`);
-    const imgUrl = data.result.hdurl;
+    const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=`;
+
+    useEffect(() => {
+        const getPhoto = async () => {
+        setLoading(true);
+        setError(false);
+        const newUrl = url + dateForApi;
+        try {
+            const response = await axios.get(newUrl);
+            setData(response.data);
+         } catch (error) {
+            setError(true);
+        }
+        setLoading(false);
+    };
+
+    getPhoto();
+
+    }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (
-        <div>
+        <>
+        {loading ? (
+            <h1>Loading...</h1>
+        ) : error ? (
+            <h1>Error</h1>
+        ) : (
+            <div>
             <StyledH1>Random</StyledH1>
-            <StyledH1>Photo of the day: {dateForApi}</StyledH1>
+            <StyledH1>Photo of the day: {data?.date}</StyledH1>
             <StyledImgContainer>
-                <StyledImg src={imgUrl} alt="RandomPhoto"></StyledImg>
-                <StyledImgText>{data.result.copyright} ®</StyledImgText>
+                <StyledImg src={data?.hdurl} alt="RandomPhoto"></StyledImg>
+                <StyledImgText>{data?.copyright} ®</StyledImgText>
             </StyledImgContainer>
-            <StyledTitle>{data.result.title}</StyledTitle>
-            <StyledDescription>{data.result.explanation}</StyledDescription>
+            <StyledTitle>{data?.title}</StyledTitle>
+            <StyledDescription>{data?.explanation}</StyledDescription>
         </div>
+        )}
+        
+        </>
     );
 }
