@@ -17,20 +17,12 @@ describe('Photo of custom day', () => {
         });
     });
 
-    test('shows the img or video', async () => {
-        render(<CustomDatePhoto />);
-        await waitFor(() => {
-            const img = screen.getByTestId('img');
-            expect(img).toBeInTheDocument();
-        });
-    });
-
     test('changes the input', async () => {
         render(<CustomDatePhoto />);
         await waitFor(() => {
             const input = screen.getByTestId('date-input');
             fireEvent.change(input, { target: { value: '2022-01-20' } }); //eslint-disable-line
-            expect(input).toBeInTheDocument();
+            expect(input.value).toBe('2022-01-20');
         });
     });
 });

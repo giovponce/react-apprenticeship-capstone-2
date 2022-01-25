@@ -18,14 +18,6 @@ describe('Photo of the day', () => {
         });
     });
 
-    test('shows the main title', async () => {
-        render(<PhotoOfTheDay />);
-        await waitFor(() => {
-            const mainTitle = screen.getByTestId('mainTitle');
-            expect(mainTitle).toBeInTheDocument();
-        });
-    });
-
     test('shows the title', async () => {
         render(<PhotoOfTheDay />);
         await waitFor(() => {
