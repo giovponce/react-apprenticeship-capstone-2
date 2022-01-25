@@ -23,6 +23,7 @@ export default function CustomDatePhoto() {
     const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=`;
 
     useEffect(() => {
+        let isMounted = true;
         const getPhoto = async () => {
         setLoading(true);
         setError(false);
@@ -30,11 +31,13 @@ export default function CustomDatePhoto() {
         const newUrl = url + date.target.value;
         try {
             const response = await axios.get(newUrl);
-            if(response.data.media_type === "video"){
-                setVideo(true);
-                setData(response.data);
-            }else{
-                setData(response.data);
+            if (isMounted){
+                if(response.data.media_type === "video"){
+                    setVideo(true);
+                    setData(response.data);
+                }else{
+                    setData(response.data);
+                }
             }
          } catch (error) {
             setError(true);
@@ -43,6 +46,8 @@ export default function CustomDatePhoto() {
     };
 
     getPhoto();
+
+    return () => { isMounted = false };
 
     }, [date])// eslint-disable-line react-hooks/exhaustive-deps
 
@@ -63,41 +68,33 @@ export default function CustomDatePhoto() {
         )
     }
 
-    if(loading) {
-        return(
+    return (
+        <>
+        {loading ? (
             <div>
                 <p>Loading...</p>
             </div>
-        )
-    }
-
-    if(error) {
-        return(
+        ) : error ? (
             <div>
                  <StyledInput type="date" id="date" value={date.target.value} selected={date} onChange={preSetDate}></StyledInput>
                 <p>{errorMessage}</p>
             </div>
-        )
-    }
-
-    return (
-        <>
-        {video ? (
+        ) : video ? (
             <div>
-                <StyledInput type="date" id="date" value={date.target.value} selected={date} onChange={preSetDate} />
+                <StyledInput type="date" id="date" data-testid="date-input" value={date.target.value} selected={date} onChange={preSetDate} />
                 <br/><br/>
                 <StyledImgContainer>
-                    <StyledIFrame title={data.title} src={data.url}></StyledIFrame>
+                    <StyledIFrame data-testid="img" title={data.title} src={data.url}></StyledIFrame>
                 </StyledImgContainer>
                 <StyledTitle>{data?.title}</StyledTitle>
                 <StyledDescription>{data?.explanation}</StyledDescription>
             </div>
         ) : (
             <div>
-                <StyledInput type="date" id="date" value={date.target.value} selected={date} onChange={preSetDate} />
+                <StyledInput type="date" id="date" data-testid="date-input" value={date.target.value} selected={date} onChange={preSetDate} />
                 <br/><br/>
                 <StyledImgContainer>
-                    <StyledImg src={data?.url} alt="CustomDatePhoto"></StyledImg>
+                    <StyledImg data-testid="img" src={data?.url}></StyledImg>
                     <StyledImgText>{data?.copyright} ®</StyledImgText>
                 </StyledImgContainer>
                 <StyledTitle>{data?.title}</StyledTitle>

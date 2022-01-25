@@ -1,10 +1,19 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import RandomPhoto from '../Pages/RandomPhoto';
 
 describe('Photo of random day', () => {
-    test('must show an img', () => {
+
+    test('loading as true', () => {
         render(<RandomPhoto />);
-        const img = screen.getByAltText('RandomPhoto');
-        expect(img).toBeInTheDocument();
-    })
+        const loading = screen.getByText('Loading...');
+        expect(loading).toBeInTheDocument();
+    });
+
+    test('shows the img or video', async () => {
+        render(<RandomPhoto />);
+        await waitFor(() => {
+            const img = screen.getByTestId('img');
+            expect(img).toBeInTheDocument();
+        });
+    });
 }); 

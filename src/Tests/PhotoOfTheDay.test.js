@@ -1,10 +1,45 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import PhotoOfTheDay from '../Pages/PhotoOfTheDay';
+import * as React from 'react';
 
 describe('Photo of the day', () => {
-    test('must show an img', () => {
+    
+    test('loading as true', () => {
         render(<PhotoOfTheDay />);
-        const img = screen.getByAltText('PhotoOfTheDay');
-        expect(img).toBeInTheDocument();
-    }) 
+        const loading = screen.getByText('Loading...');
+        expect(loading).toBeInTheDocument();
+    });
+
+    test('shows the img or video', async () => {
+        render(<PhotoOfTheDay />);
+        await waitFor(() => {
+            const img = screen.getByTestId('img');
+            expect(img).toBeInTheDocument();
+        });
+    });
+
+    test('shows the main title', async () => {
+        render(<PhotoOfTheDay />);
+        await waitFor(() => {
+            const mainTitle = screen.getByTestId('mainTitle');
+            expect(mainTitle).toBeInTheDocument();
+        });
+    });
+
+    test('shows the title', async () => {
+        render(<PhotoOfTheDay />);
+        await waitFor(() => {
+            const title = screen.getByTestId('title');
+            expect(title).toBeInTheDocument();
+        });
+    });
+
+    test('shows the description', async () => {
+        render(<PhotoOfTheDay />);
+        await waitFor(() => {
+            const description = screen.getByTestId('description');
+            expect(description).toBeInTheDocument();
+        });
+    });
+
 });
