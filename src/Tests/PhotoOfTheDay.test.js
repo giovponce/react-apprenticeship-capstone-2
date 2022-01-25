@@ -6,5 +6,5 @@ describe('Photo of the day', () => {
         render(<PhotoOfTheDay />);
         const img = screen.getByAltText('PhotoOfTheDay');
         expect(img).toBeInTheDocument();
-    })
+    }) 
 });

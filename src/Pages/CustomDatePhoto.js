@@ -66,7 +66,7 @@ export default function CustomDatePhoto() {
     if(loading) {
         return(
             <div>
-                <p>loading...</p>
+                <p>Loading...</p>
             </div>
         )
     }

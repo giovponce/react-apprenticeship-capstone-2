@@ -8,10 +8,27 @@ export const StyledUl = styled.ul`
     background-color: #333;
 `;
 
+
 export const StyledLi = styled.li`
     text-decoration: none !important;
     color: white;
     text-align: center;
     padding: 2%;
 
+`;
+
+export const StyledMobileNav = styled.nav`
+    display: none;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+`;
+
+export const StyledNav = styled.nav`
+    display: none;
+
+    @media (min-width: 769px) {
+        display: block;
+    }
 `;

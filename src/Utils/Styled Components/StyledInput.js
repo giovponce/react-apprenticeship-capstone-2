@@ -11,3 +11,4 @@ export const StyledInput = styled.input`
     text-align: center;
     border-radius: 5px;
 `;
+

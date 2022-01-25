@@ -6,5 +6,5 @@ describe('Photo of custom day', () => {
         render(<CustomDatePhoto />);
         const img = screen.getByAltText('CustomDatePhoto');
         expect(img).toBeInTheDocument();
-    })
+    }) 
 });

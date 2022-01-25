@@ -7,4 +7,4 @@ describe('Photo of random day', () => {
         const img = screen.getByAltText('RandomPhoto');
         expect(img).toBeInTheDocument();
     })
-});
+}); 

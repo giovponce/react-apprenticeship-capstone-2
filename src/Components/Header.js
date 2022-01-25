@@ -1,22 +1,13 @@
 import React from "react";
-import { StyledUl, StyledLi } from "../Utils/Styled Components/StyledNav";
-import { StyledLink } from "../Utils/Styled Components/StyledLink";
+import Navigation from "./Navigation";
+import MobileNavigation from "./MobileNavigation";
+
 
 export default function Header() {
     return (
         <div>
-            
-            <StyledUl>
-                <StyledLi>
-                    <StyledLink to="/">Pic of the day</StyledLink>
-                </StyledLi>
-                <StyledLi>
-                    <StyledLink to="/random">Random</StyledLink>
-                </StyledLi>
-                <StyledLi>
-                    <StyledLink to="/custom">Custom</StyledLink>
-                </StyledLi>
-            </StyledUl>
+            <Navigation />
+            <MobileNavigation />       
         </div>
     );
 }
