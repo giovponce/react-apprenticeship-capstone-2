@@ -3,9 +3,11 @@ import styled from 'styled-components';
 export const StyledUl = styled.ul`
     display: flex;
     justify-content: flex-end;
-    padding-right: 2rem;
     list-style-type: none;
     background-color: #333;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 `;
 
 

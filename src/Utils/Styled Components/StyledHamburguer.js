@@ -7,7 +7,7 @@ export const StyledLinkForHamburguer = styled(Link)`
 
 export const StyledUlForHamburguer = styled.ul`
     position: absolute;
-    width: 300px;
+    width: 50%;
     margin: -100px 0 0 -50px;
     padding: 50px;
     padding-top: 125px;
@@ -31,7 +31,7 @@ export const StyledSpanForHamburguer = styled.span`
     margin-bottom: 5px;
     position: relative;
 
-    background: #484848;
+    background: white;
     border-radius: 3px;
 
     z-index: 1;
@@ -58,12 +58,17 @@ export const StyledInputForHamburguer = styled.input`
 
 export const StyledHamburguerContainer = styled.div`
     display: block;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 2%;
     position: relative;
-    top: 50px;
-    left: 50px;
-    z-index: 1;
-    -webkit-user-select: none;
-    user-select: none;
+    // top: 50px;
+    // left: 50px;
+    // z-index: 1;
+    // -webkit-user-select: none;
+    // user-select: none;
+    background-color: #333;
 
 
     ${StyledLinkForHamburguer} {
