@@ -13,12 +13,15 @@
 - Test coverage above 88%.
 
 ## Screenshots
-![Mobile View](https://ibb.co/3sQXWLk)
-![Tablet View](https://ibb.co/b3FJWsS)
-![Desktop View](https://ibb.co/P9KWGKk)
+
+![Mobile View](https://user-images.githubusercontent.com/96957431/151033978-929714a9-14a5-4527-9d99-826fa4cd6161.png)
+![Tablet View](https://user-images.githubusercontent.com/96957431/151034020-218263f4-16e4-4498-99d7-84acf017c2e3.png)
+![Desktop View](https://user-images.githubusercontent.com/96957431/151033932-559f12af-9b1b-4fd8-8ef9-25eaea9597e7.png)
+
 
 ## Testing Coverage Report
-![Coverage](https://ibb.co/ZS5gyQd)
+![Coverage](https://user-images.githubusercontent.com/96957431/151034064-5bf624bb-b391-4bad-b4c6-59bd1e939c4e.png)
+
 
 ## Resources used
 
