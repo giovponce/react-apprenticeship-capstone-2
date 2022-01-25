@@ -15,12 +15,15 @@
 ## Screenshots
 
 Mobile View
+
 ![Mobile View](https://user-images.githubusercontent.com/96957431/151033978-929714a9-14a5-4527-9d99-826fa4cd6161.png)
 
 Tablet View
+
 ![Tablet View](https://user-images.githubusercontent.com/96957431/151034020-218263f4-16e4-4498-99d7-84acf017c2e3.png)
 
 Desktop View
+
 ![Desktop View](https://user-images.githubusercontent.com/96957431/151033932-559f12af-9b1b-4fd8-8ef9-25eaea9597e7.png)
 
 
