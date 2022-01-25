@@ -16,6 +16,7 @@ export const StyledUlForHamburguer = styled.ul`
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    z-index: 1;
     flex-flow: column;
     
     &li{
@@ -99,15 +100,18 @@ export const StyledHamburguerContainer = styled.div`
       opacity: 1;
       transform: rotate(45deg) translate(-2px, -1px);
       background: #232323;
+      z-index: 3;
     }
 
     ${StyledInputForHamburguer}:checked ~ ${StyledSpanForHamburguer}:nth-last-child(3) {
       opacity: 0;
       transform: rotate(0deg) scale(0.2, 0.2);
+      z-index: 3;
     }
 
     ${StyledInputForHamburguer}:checked ~ ${StyledSpanForHamburguer}:nth-last-child(2) {
       transform: rotate(-45deg) translate(0, -1px);
+      z-index: 3;
     }
 
     ${StyledInputForHamburguer}:checked ~ ul {
